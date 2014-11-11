@@ -1,7 +1,7 @@
 qxlGraphics
 ===========
 
-qxl display driver for Mac OS X
+A work-in-progress qxl display driver for Mac OS X
 
 
 References
