@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		636E056E1A11AE8900AD33E1 /* qxlGraphicsClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 636E056C1A11AE8900AD33E1 /* qxlGraphicsClient.cpp */; };
+		636E056F1A11AE8900AD33E1 /* qxlGraphicsClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 636E056D1A11AE8900AD33E1 /* qxlGraphicsClient.h */; };
+		637EE8211A11928F0048147A /* qxlGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 637EE8201A11928F0048147A /* qxlGraphics.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		636E056B1A11ACAE00AD33E1 /* qxlGraphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = qxlGraphics.h; sourceTree = "<group>"; };
+		636E056C1A11AE8900AD33E1 /* qxlGraphicsClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = qxlGraphicsClient.cpp; sourceTree = "<group>"; };
+		636E056D1A11AE8900AD33E1 /* qxlGraphicsClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qxlGraphicsClient.h; sourceTree = "<group>"; };
+		637EE81B1A11928F0048147A /* qxlGraphics.kext */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = qxlGraphics.kext; sourceTree = BUILT_PRODUCTS_DIR; };
+		637EE81F1A11928F0048147A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		637EE8201A11928F0048147A /* qxlGraphics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = qxlGraphics.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		637EE8171A11928F0048147A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		637EE8111A11928F0048147A = {
+			isa = PBXGroup;
+			children = (
+				637EE81D1A11928F0048147A /* qxlGraphics */,
+				637EE81C1A11928F0048147A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		637EE81C1A11928F0048147A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				637EE81B1A11928F0048147A /* qxlGraphics.kext */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		637EE81D1A11928F0048147A /* qxlGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				637EE8201A11928F0048147A /* qxlGraphics.cpp */,
+				636E056B1A11ACAE00AD33E1 /* qxlGraphics.h */,
+				636E056C1A11AE8900AD33E1 /* qxlGraphicsClient.cpp */,
+				636E056D1A11AE8900AD33E1 /* qxlGraphicsClient.h */,
+				637EE81E1A11928F0048147A /* Supporting Files */,
+			);
+			path = qxlGraphics;
+			sourceTree = "<group>";
+		};
+		637EE81E1A11928F0048147A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				637EE81F1A11928F0048147A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		637EE8181A11928F0048147A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				636E056F1A11AE8900AD33E1 /* qxlGraphicsClient.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		637EE81A1A11928F0048147A /* qxlGraphics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 637EE8241A11928F0048147A /* Build configuration list for PBXNativeTarget "qxlGraphics" */;
+			buildPhases = (
+				637EE8161A11928F0048147A /* Sources */,
+				637EE8171A11928F0048147A /* Frameworks */,
+				637EE8181A11928F0048147A /* Headers */,
+				637EE8191A11928F0048147A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = qxlGraphics;
+			productName = qxlGraphics;
+			productReference = 637EE81B1A11928F0048147A /* qxlGraphics.kext */;
+			productType = "com.apple.product-type.kernel-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		637EE8121A11928F0048147A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "John Kelley";
+				TargetAttributes = {
+					637EE81A1A11928F0048147A = {
+						CreatedOnToolsVersion = 6.1;
+					};
+				};
+			};
+			buildConfigurationList = 637EE8151A11928F0048147A /* Build configuration list for PBXProject "qxlGraphics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 637EE8111A11928F0048147A;
+			productRefGroup = 637EE81C1A11928F0048147A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				637EE81A1A11928F0048147A /* qxlGraphics */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		637EE8191A11928F0048147A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		637EE8161A11928F0048147A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				637EE8211A11928F0048147A /* qxlGraphics.cpp in Sources */,
+				636E056E1A11AE8900AD33E1 /* qxlGraphicsClient.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		637EE8221A11928F0048147A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		637EE8231A11928F0048147A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		637EE8251A11928F0048147A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"spice-protocol",
+				);
+				INFOPLIST_FILE = qxlGraphics/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULE_NAME = org.qemu.qxlGraphics;
+				MODULE_START = qxlGraphics_start;
+				MODULE_STOP = qxlGraphics_stop;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Debug;
+		};
+		637EE8261A11928F0048147A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"spice-protocol",
+				);
+				INFOPLIST_FILE = qxlGraphics/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULE_NAME = org.qemu.qxlGraphics;
+				MODULE_START = qxlGraphics_start;
+				MODULE_STOP = qxlGraphics_stop;
+				MODULE_VERSION = 1.0.0d1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.9;
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = kext;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		637EE8151A11928F0048147A /* Build configuration list for PBXProject "qxlGraphics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				637EE8221A11928F0048147A /* Debug */,
+				637EE8231A11928F0048147A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		637EE8241A11928F0048147A /* Build configuration list for PBXNativeTarget "qxlGraphics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				637EE8251A11928F0048147A /* Debug */,
+				637EE8261A11928F0048147A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 637EE8121A11928F0048147A /* Project object */;
+}
