@@ -30,5 +30,8 @@
 # Xcode per-user cruft
 xcuserdata
 
+# Xcode build products
+build
+
 # vim temporary files
 *.swp
