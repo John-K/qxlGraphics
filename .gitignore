@@ -26,3 +26,9 @@
 *.exe
 *.out
 *.app
+
+# Xcode per-user cruft
+xcuserdata
+
+# vim temporary files
+*.swp
