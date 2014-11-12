@@ -6,7 +6,13 @@
 //  Copyright (c) 2014 John Kelley. All rights reserved.
 //
 
+// Ignore "warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]"
+// in kern/queue.h
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-register"
 #include <IOKit/pci/IOPCIDevice.h>
+#pragma clang diagnostic pop
+
 #include <IOKit/IOMemoryDescriptor.h>
 #include <spice/qxl_dev.h>
 #include "qxlGraphics.h"

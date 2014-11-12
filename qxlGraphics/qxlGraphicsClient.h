@@ -8,7 +8,12 @@
 
 #pragma once
 
+// Ignore "warning: 'register' storage class specifier is deprecated [-Wdeprecated-register]"
+// in kern/queue.h
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-register"
 #include <IOKit/IOUserClient.h>
+#pragma clang diagnostic pop
 
 class qxlGraphicsClient : public IOUserClient {
     OSDeclareDefaultStructors(qxlGraphicsClient);
