@@ -17,7 +17,7 @@
 #include <spice/qxl_dev.h>
 #include "qxlGraphics.h"
 
-bool qxlGraphics::Start(IOPCIDevice *provider) {
+bool qxlGraphics::start(IOPCIDevice *provider) {
     IODeviceMemory *bar;
     
     if (!provider) {
