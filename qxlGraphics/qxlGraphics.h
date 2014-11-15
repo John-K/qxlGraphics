@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <sys/types.h>
 #include <IOKit/graphics/IOGraphicsTypes.h>
+#include <IOKit/graphics/IOFramebuffer.h>
 
 class IOPCIDevice;
 class IODeviceMemory;
@@ -41,7 +42,6 @@ public:
     
     // Setup
     IOReturn enableController(void);
-    IOReturn setDisplayMode(IODisplayModeID displayMode, IOIndex depth);
     
     IOItemCount getConnectionCount();
     bool isConsoleDevice();
