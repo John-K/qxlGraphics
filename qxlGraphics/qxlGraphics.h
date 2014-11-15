@@ -21,6 +21,8 @@ class qxlGraphics {
     IOPCIDevice * _provider;
     
     // PCI BAR mappings
+    IODeviceMemory *_vram_bar;
+    
     IOPhysicalAddress _io_base;
     IOPhysicalAddress _rom_base;
     IOPhysicalAddress _ram_base;

@@ -41,11 +41,11 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
     _io_base = _io_bar_map->getVirtualAddress();
     
     // get and map ROM address
-    bar = provider->getDeviceMemoryWithIndex(QXL_ROM_RANGE_INDEX);
-    if (!bar) {
+    _vram_bar = provider->getDeviceMemoryWithIndex(QXL_ROM_RANGE_INDEX);
+    if (!_vram_bar) {
         return false;
     }
-    _rom_bar_map = bar->createMappingInTask(kernel_task, 0, kIOMapAnywhere, 0, 0);
+    _rom_bar_map = _vram_bar->createMappingInTask(kernel_task, 0, kIOMapAnywhere, 0, 0);
     _rom_base = _rom_bar_map->getVirtualAddress();
     _rom = (QXLRom *)_rom_base;
     if (_rom->magic != QXL_ROM_MAGIC) {
