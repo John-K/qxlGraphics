@@ -79,3 +79,13 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
     return true;
 }
 
+#pragma mark -
+#pragma mark Framebuffer memory
+#pragma mark -
+
+IODeviceMemory *
+qxlGraphics::getVRAMRange() {
+    if (!_vram_bar_map)
+        return 0;
+    return IODeviceMemory::withSubRange(_vram_bar, 0U, _vram_bar_map->getSize());
+}
