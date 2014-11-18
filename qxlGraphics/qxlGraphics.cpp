@@ -80,6 +80,18 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
 }
 
 #pragma mark -
+#pragma mark Pixel Formats
+#pragma mark -
+
+// We only support the 32-bit Pixel Format
+static char const pixelFormatStrings[] = IO32BitDirectPixels "\0";
+
+const char *
+getPixelFormats() {
+    return pixelFormatStrings;
+}
+
+#pragma mark -
 #pragma mark Framebuffer memory
 #pragma mark -
 
