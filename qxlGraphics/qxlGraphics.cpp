@@ -337,11 +337,13 @@ qxlGraphics::getApertureRange(IOPixelAperture aperture) {
 IOReturn
 qxlGraphics::getDDCBlock(IOIndex connectIndex, UInt32 blockNumber, IOSelect blockType, IOOptionBits options, UInt8 *data, IOByteCount *length) {
     //TODO: implement sending EDID data back
+    LOG("called");
     return kIOReturnNoResources;
 }
 
 bool
 qxlGraphics::hasDDCConnect(IOIndex connectIndex) {
     // we always provide EDID data
+    LOG("called");
     return true;
 }
