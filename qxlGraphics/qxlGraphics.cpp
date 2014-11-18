@@ -17,7 +17,12 @@
 #include <spice/qxl_dev.h>
 #include "qxlGraphics.h"
 
-bool qxlGraphics::start(IOPCIDevice *provider) {
+#pragma mark -
+#pragma mark IOService Initialization and setup
+#pragma mark -
+
+bool
+qxlGraphics::start(IOPCIDevice *provider) {
     IODeviceMemory *bar;
     
     if (!provider) {
@@ -28,6 +33,8 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
     
     provider->setMemoryEnable(true);
     provider->setIOEnable(true);
+    
+    // XXX: Apple says that we should do init in enableController instead of here
     
     // get and map IO address
     bar = provider->getDeviceMemoryWithIndex(QXL_IO_RANGE_INDEX);
@@ -77,6 +84,13 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
     //TODO: setup memory regions
     //TODO: setup ring buffers
     return true;
+}
+
+IOReturn
+qxlGraphics::enableController( void ) {
+    // XXX: should we be doing init here?
+    
+    return kIOReturnSuccess;
 }
 
 #pragma mark -
