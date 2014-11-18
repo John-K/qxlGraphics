@@ -87,7 +87,7 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
 static char const pixelFormatStrings[] = IO32BitDirectPixels "\0";
 
 const char *
-getPixelFormats() {
+qxlGraphics::getPixelFormats() {
     return pixelFormatStrings;
 }
 
