@@ -329,3 +329,4 @@ qxlGraphics::getApertureRange(IOPixelAperture aperture) {
     
     return getVRAMRange();
 }
+}
