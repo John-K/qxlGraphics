@@ -79,12 +79,12 @@ public:
     // Display Modes
     IOItemCount getDisplayModeCount(void);
     IOReturn getDisplayModes(IODisplayModeID *allDisplayModes);
+    IOReturn setDisplayMode(IODisplayModeID displayMode, IOIndex depth);
     IOReturn getCurrentDisplayMode(IODisplayModeID *displayMode, IOIndex *depth);
-    UInt64 getPixelFormatsForDisplayMode(IODisplayModeID displayMode, IOIndex depth);
+    UInt64   getPixelFormatsForDisplayMode(IODisplayModeID displayMode, IOIndex depth);
     IOReturn getInformationForDisplayMode(IODisplayModeID displayMode, IODisplayModeInformation* info);
     IOReturn getPixelInformation(IODisplayModeID displayMode, IOIndex depth, IOPixelAperture aperture, IOPixelInformation* pixelInfo);
-    IOReturn setDisplayMode(IODisplayModeID displayMode, IOIndex depth);
-    
+
     // Pixel formats
     const char* getPixelFormats();
     
@@ -92,7 +92,7 @@ public:
     IODeviceMemory* getVRAMRange();
     IODeviceMemory* getApertureRange(IOPixelAperture aperture);
     
-    // Cursor
+    // Cursor - for future acceleration support
     IOReturn setCursorState(SInt32 x, SInt32 y, bool visible);
     IOReturn setCursorImage(void* cursorImage);
     
