@@ -26,7 +26,9 @@ typedef struct {
 #define DISP_FLAGS_DEFAULT (kDisplayModeValidFlag | kDisplayModeSafeFlag | kDisplayModeDefaultFlag)
 } DisplayMode;
 
-class qxlGraphics {
+class qxlGraphics : public IOFramebuffer {
+    typedef IOFramebuffer super;
+    
     IOPCIDevice * _provider;
     
     // PCI BAR mappings
