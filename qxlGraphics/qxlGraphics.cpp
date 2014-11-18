@@ -25,6 +25,8 @@ bool
 qxlGraphics::start(IOPCIDevice *provider) {
     IODeviceMemory *bar;
     
+    LOG("with provider %p", provider);
+    
     if (!provider) {
         return false;
     }
@@ -89,7 +91,7 @@ qxlGraphics::start(IOPCIDevice *provider) {
 IOReturn
 qxlGraphics::enableController( void ) {
     // XXX: should we be doing init here?
-    
+    LOG("called");
     return kIOReturnSuccess;
 }
 
@@ -190,11 +192,14 @@ qxlGraphics::_supported_modes[] = {
 
 IOItemCount
 qxlGraphics::getDisplayModeCount() {
-    return sizeof(_supported_modes)/sizeof(DisplayMode);
+    IOItemCount cnt = sizeof(_supported_modes)/sizeof(DisplayMode);
+    LOG("%d", cnt);
+    return cnt;
 }
 
 IOReturn
 qxlGraphics::getDisplayModes(IODisplayModeID *allDisplayModes) {
+    LOG("called");
     for (uint32_t i = 0; i < getDisplayModeCount(); ++i) {
         *allDisplayModes++ = i;
     }
@@ -204,6 +209,8 @@ qxlGraphics::getDisplayModes(IODisplayModeID *allDisplayModes) {
 
 IOReturn
 qxlGraphics::getCurrentDisplayMode(IODisplayModeID *displayMode, IOIndex *depth) {
+    LOG("mode %d, depth %d", _current_mode_id, _supported_depth);
+    
     *displayMode = _current_mode_id;
     *depth = _supported_depth;
     
@@ -212,6 +219,8 @@ qxlGraphics::getCurrentDisplayMode(IODisplayModeID *displayMode, IOIndex *depth)
 
 IOReturn
 qxlGraphics::setDisplayMode(IODisplayModeID displayMode, IOIndex depth) {
+    LOG("mode %d, depth %d", displayMode, depth);
+    
     if (depth != _supported_depth)
         return kIOReturnBadArgument;
     
@@ -224,11 +233,15 @@ qxlGraphics::setDisplayMode(IODisplayModeID displayMode, IOIndex depth) {
 
 IOReturn
 qxlGraphics::getInformationForDisplayMode(IODisplayModeID displayMode, IODisplayModeInformation* info) {
+    LOG("mode %d", displayMode);
+    
     if (displayMode > getDisplayModeCount() - 1) {
         return kIOReturnBadArgument;
     }
  
     const DisplayMode *curMode = &_supported_modes[_current_mode_id];
+    
+    LOG("%dx%d flags 0x%08X", curMode->width, curMode->height, curMode->flags);
     
     info->maxDepthIndex = 0;
     info->nominalWidth = curMode->width;
@@ -244,12 +257,14 @@ UInt64
 qxlGraphics::getPixelFormatsForDisplayMode(IODisplayModeID displayMode, IOIndex depth) {
     // as per developer documentation:
     //     "IOFramebuffer subclasses must implement this method to return zero."
-    
+    LOG("called");
     return 0;
 }
 
 IOReturn
 qxlGraphics::getPixelInformation(IODisplayModeID displayMode, IOIndex depth, IOPixelAperture aperture, IOPixelInformation* pixelInfo) {
+    LOG("mode %d", displayMode);
+    
     if (displayMode > getDisplayModeCount() - 1)
         return kIOReturnBadArgument;
 
@@ -286,6 +301,8 @@ qxlGraphics::getPixelFormats() {
     // We only support the 32-bit Pixel Format
     static char const pixelFormatStrings[] = IO32BitDirectPixels "\0";
     
+    LOG("called");
+    
     return pixelFormatStrings;
 }
 
@@ -295,14 +312,18 @@ qxlGraphics::getPixelFormats() {
 
 IODeviceMemory *
 qxlGraphics::getVRAMRange() {
+    LOG("vram_bar_map is %p", _vram_bar_map);
+    
     if (!_vram_bar_map)
         return 0;
+    
     return IODeviceMemory::withSubRange(_vram_bar, 0U, _vram_bar_map->getSize());
 }
 
 IODeviceMemory*
 qxlGraphics::getApertureRange(IOPixelAperture aperture) {
-
+    LOG("for aperture 0x%08x", aperture);
+    
     if (aperture != kIOFBSystemAperture)
         return 0;
     
