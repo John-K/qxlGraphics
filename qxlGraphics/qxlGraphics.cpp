@@ -93,6 +93,21 @@ qxlGraphics::enableController( void ) {
     return kIOReturnSuccess;
 }
 
+void
+qxlGraphics::logf(const char *function, const char *fmt, ...) {
+    char buffer[512];
+    va_list ap;
+    
+    buffer[0] = '\0';
+    strlcat(buffer, function, sizeof buffer);
+    strlcat(buffer, ": ", sizeof buffer);
+    strlcat(buffer, fmt, sizeof buffer);
+    
+    va_start(ap, fmt);
+    IOLog(buffer, ap);
+    va_end(ap);
+}
+          
 #pragma mark -
 #pragma mark Attributes
 #pragma mark -

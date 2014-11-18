@@ -52,6 +52,11 @@ class qxlGraphics {
     const IOIndex _supported_depth = 32;
     const uint32_t _refresh_60Hz = 60 << 16;
     
+    // setup our logging facilities
+    __attribute__((__format__ (__printf__, 3, 4)))
+    void logf(const char *function, const char *fmt, ...);
+#define LOG(x, ...) logf(__func__, x, ##__VA_ARGS__)
+    
 public:
     // IOService routines
     bool start(IOPCIDevice *provider);
