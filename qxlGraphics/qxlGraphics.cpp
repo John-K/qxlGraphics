@@ -112,6 +112,70 @@ qxlGraphics::logf(const char *function, const char *fmt, ...) {
 #pragma mark Attributes
 #pragma mark -
 
+IOReturn
+qxlGraphics::getAttribute(IOSelect attribute, uintptr_t *value) {
+    IOReturn ret = kIOReturnUnsupported;
+    
+    switch (attribute) {
+        case kIOHardwareCursorAttribute:
+            LOG("for kIOHardwareCursorAttribute");
+            // we don't currently implement a HW cursor
+            *value = 0;
+            ret = kIOReturnSuccess;
+            break;
+            
+        default:
+            LOG("calling super for attrib %d", attribute);
+            ret = super::getAttribute(attribute, value);
+    }
+    
+    return ret;
+}
+
+IOReturn
+qxlGraphics::setAttribute(IOSelect attribute, uintptr_t value) {
+    IOReturn ret = kIOReturnUnsupported;
+    
+    switch (attribute) {
+        default:
+            LOG("calling super for attrib %d with value at %p", attribute, (void *)value);
+            ret = super::setAttribute(attribute, value);
+    }
+    
+    return ret;
+}
+
+IOReturn
+qxlGraphics::getAttributeForConnection(IOIndex connectIndex, IOSelect attribute, uintptr_t *value) {
+    IOReturn ret = kIOReturnUnsupported;
+    
+    switch (attribute) {
+        case kConnectionSupportsHLDDCSense:
+            LOG("for kConnectionSupportsHLDDCSense");
+            // we support EDID queries
+            *value = 1;
+            ret = kIOReturnSuccess;
+            break;
+            
+        default:
+            LOG("calling super for attrib %d", attribute);
+            ret = super::getAttributeForConnection(connectIndex, attribute, value);
+    }
+    return ret;
+}
+
+IOReturn
+qxlGraphics::setAttributeForConnection(IOIndex connectIndex, IOSelect attribute, uintptr_t value) {
+    IOReturn ret = kIOReturnUnsupported;
+    
+    switch (attribute) {
+        default:
+            LOG("calling super for attrib %d with value at %p", attribute, (void *)value);
+            ret = super::setAttributeForConnection(connectIndex, attribute, value);
+    }
+    return ret;
+}
+
 #pragma mark -
 #pragma mark Display Modes
 #pragma mark -
