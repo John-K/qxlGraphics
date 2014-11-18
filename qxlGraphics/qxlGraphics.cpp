@@ -220,3 +220,12 @@ qxlGraphics::getVRAMRange() {
         return 0;
     return IODeviceMemory::withSubRange(_vram_bar, 0U, _vram_bar_map->getSize());
 }
+
+IODeviceMemory*
+qxlGraphics::getApertureRange(IOPixelAperture aperture) {
+
+    if (aperture != kIOFBSystemAperture)
+        return 0;
+    
+    return getVRAMRange();
+}
