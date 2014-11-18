@@ -17,6 +17,15 @@ class IOPCIDevice;
 class IODeviceMemory;
 class IOMemoryMap;
 
+typedef struct {
+    uint32_t width;
+    uint32_t height;
+    uint32_t flags;
+// helpful flags values
+#define DISP_FLAGS (kDisplayModeValidFlag | kDisplayModeSafeFlag)
+#define DISP_FLAGS_DEFAULT (kDisplayModeValidFlag | kDisplayModeSafeFlag | kDisplayModeDefaultFlag)
+} DisplayMode;
+
 class qxlGraphics {
     IOPCIDevice * _provider;
     
@@ -36,6 +45,12 @@ class qxlGraphics {
     // QXL metadata
     QXLRom *_rom;
     QXLRam *_ram_header;
+    
+    // Current display mode information
+    static const DisplayMode _supported_modes[];
+    IODisplayModeID _current_mode_id;
+    const IOIndex _supported_depth = 32;
+    const uint32_t _refresh_60Hz = 60 << 16;
     
 public:
     // IOService routines
@@ -58,7 +73,6 @@ public:
     IOItemCount getDisplayModeCount(void);
     IOReturn getDisplayModes(IODisplayModeID *allDisplayModes);
     IOReturn getCurrentDisplayMode(IODisplayModeID *displayMode, IOIndex *depth);
-    //IOReturn CustomMode(CustomModeData const* inData, CustomModeData *outData, size_t inSize, size_t *outSize);
     UInt64 getPixelFormatsForDisplayMode(IODisplayModeID displayMode, IOIndex depth);
     IOReturn getInformationForDisplayMode(IODisplayModeID displayMode, IODisplayModeInformation* info);
     IOReturn getPixelInformation(IODisplayModeID displayMode, IOIndex depth, IOPixelAperture aperture, IOPixelInformation* pixelInfo);

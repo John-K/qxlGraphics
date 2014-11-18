@@ -80,14 +80,119 @@ bool qxlGraphics::start(IOPCIDevice *provider) {
 }
 
 #pragma mark -
+#pragma mark Attributes
+#pragma mark -
+
+#pragma mark -
+#pragma mark Display Modes
+#pragma mark -
+
+DisplayMode const
+qxlGraphics::_supported_modes[] = {
+    1024,  768, DISP_FLAGS,	// 4:3
+    1280,  720, DISP_FLAGS_DEFAULT,	// 16:9
+    1920, 1080, DISP_FLAGS,	// 16:9
+    1920, 1200, DISP_FLAGS,	// 16:10
+};
+
+IOItemCount
+qxlGraphics::getDisplayModeCount() {
+    return sizeof(_supported_modes)/sizeof(DisplayMode);
+}
+
+IOReturn
+qxlGraphics::getDisplayModes(IODisplayModeID *allDisplayModes) {
+    for (uint32_t i = 0; i < getDisplayModeCount(); ++i) {
+        *allDisplayModes++ = i;
+    }
+    
+    return kIOReturnSuccess;
+}
+
+IOReturn
+qxlGraphics::getCurrentDisplayMode(IODisplayModeID *displayMode, IOIndex *depth) {
+    *displayMode = _current_mode_id;
+    *depth = _supported_depth;
+    
+    return kIOReturnSuccess;
+}
+
+IOReturn
+qxlGraphics::setDisplayMode(IODisplayModeID displayMode, IOIndex depth) {
+    if (depth != _supported_depth)
+        return kIOReturnBadArgument;
+    
+    _current_mode_id = displayMode;
+    
+    //TODO: inform qxl hardware of the mode change
+    
+    return kIOReturnSuccess;
+}
+
+IOReturn
+qxlGraphics::getInformationForDisplayMode(IODisplayModeID displayMode, IODisplayModeInformation* info) {
+    if (displayMode > getDisplayModeCount() - 1) {
+        return kIOReturnBadArgument;
+    }
+ 
+    const DisplayMode *curMode = &_supported_modes[_current_mode_id];
+    
+    info->maxDepthIndex = 0;
+    info->nominalWidth = curMode->width;
+    info->nominalHeight = curMode->height;
+    info->flags = curMode->flags;
+    info->refreshRate = _refresh_60Hz;
+    
+    return kIOReturnSuccess;
+}
+
+
+UInt64
+qxlGraphics::getPixelFormatsForDisplayMode(IODisplayModeID displayMode, IOIndex depth) {
+    // as per developer documentation:
+    //     "IOFramebuffer subclasses must implement this method to return zero."
+    
+    return 0;
+}
+
+IOReturn
+qxlGraphics::getPixelInformation(IODisplayModeID displayMode, IOIndex depth, IOPixelAperture aperture, IOPixelInformation* pixelInfo) {
+    if (displayMode > getDisplayModeCount() - 1)
+        return kIOReturnBadArgument;
+
+    if (depth != _supported_depth)
+        return kIOReturnBadArgument;
+
+    // docs say that the aperture will always be kIOFBSystemAperture
+    if (aperture != kIOFBSystemAperture)
+        return kIOReturnBadArgument;
+
+    bzero(pixelInfo, sizeof(IOPixelInformation));
+
+    const DisplayMode *curMode = &_supported_modes[_current_mode_id];
+
+    pixelInfo->activeWidth  = curMode->width;
+    pixelInfo->activeHeight = curMode->height;
+    pixelInfo->flags        = curMode->flags;
+    pixelInfo->bitsPerPixel = _supported_depth;
+    pixelInfo->componentMasks[0] = 0xFF0000;
+    pixelInfo->componentMasks[1] = 0x00FF00;
+    pixelInfo->componentMasks[2] = 0x0000FF;
+    pixelInfo->componentCount    = 3;
+    pixelInfo->bitsPerComponent  = 8;
+    
+    return kIOReturnSuccess;
+}
+
+#pragma mark -
 #pragma mark Pixel Formats
 #pragma mark -
 
-// We only support the 32-bit Pixel Format
-static char const pixelFormatStrings[] = IO32BitDirectPixels "\0";
-
 const char *
 qxlGraphics::getPixelFormats() {
+    // We only support the 32-bit Pixel Format
+    static char const pixelFormatStrings[] = IO32BitDirectPixels "\0";
+    
     return pixelFormatStrings;
 }
 
