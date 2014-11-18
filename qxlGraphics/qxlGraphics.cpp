@@ -329,4 +329,19 @@ qxlGraphics::getApertureRange(IOPixelAperture aperture) {
     
     return getVRAMRange();
 }
+
+#pragma mark -
+#pragma mark EDID support
+#pragma mark -
+
+IOReturn
+qxlGraphics::getDDCBlock(IOIndex connectIndex, UInt32 blockNumber, IOSelect blockType, IOOptionBits options, UInt8 *data, IOByteCount *length) {
+    //TODO: implement sending EDID data back
+    return kIOReturnNoResources;
+}
+
+bool
+qxlGraphics::hasDDCConnect(IOIndex connectIndex) {
+    // we always provide EDID data
+    return true;
 }
