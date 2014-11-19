@@ -29,17 +29,15 @@
 			<key>CFBundleIdentifier</key>
 			<string>org.qemu.$(PRODUCT_NAME:rfc1034identifier)</string>
 			<key>IOClass</key>
-			<string>$(PRODUCT_NAME)</string>
+			<string>qxlGraphics</string>
 			<key>IOMatchCategory</key>
 			<string>IOFramebuffer</string>
 			<key>IOPCIPrimaryMatch</key>
 			<string>0x01001b36</string>
 			<key>IOProbeScore</key>
-			<integer>30100</integer>
+			<integer>100</integer>
 			<key>IOProviderClass</key>
-			<string>qxlGraphicsClient</string>
-			<key>IOSourceVersion</key>
-			<string>1.0.0.0</string>
+			<string>IOPCIDevice</string>
 			<key>IOHardwareModel</key>
 			<string>RedHat QXL Video Adapter</string>
 		</dict>
