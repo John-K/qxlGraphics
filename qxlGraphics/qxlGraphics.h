@@ -66,7 +66,6 @@ public:
     
     // Setup
     IOReturn enableController(void);
-    
     IOItemCount getConnectionCount();
     bool isConsoleDevice();
     
