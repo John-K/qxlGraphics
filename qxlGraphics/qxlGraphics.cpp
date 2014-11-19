@@ -95,6 +95,20 @@ qxlGraphics::enableController( void ) {
     return kIOReturnSuccess;
 }
 
+IOItemCount
+qxlGraphics::getConnectionCount() {
+    LOG("called");
+    return 1;
+}
+
+bool
+qxlGraphics::isConsoleDevice() {
+    LOG("called");
+    // we're likely the boot console device, so return true
+    //TODO: query provider to figure this out
+    return true;
+}
+
 void
 qxlGraphics::logf(const char *function, const char *fmt, ...) {
     char buffer[512];
