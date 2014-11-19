@@ -35,6 +35,8 @@ typedef struct {
 } FBInterrupt;
 
 class qxlGraphics : public IOFramebuffer {
+    OSDeclareDefaultStructors(qxlGraphics);
+    
     typedef IOFramebuffer super;
     
     IOPCIDevice * _provider;
