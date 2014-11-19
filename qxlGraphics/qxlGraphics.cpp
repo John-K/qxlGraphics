@@ -345,6 +345,30 @@ qxlGraphics::getApertureRange(IOPixelAperture aperture) {
 }
 
 #pragma mark -
+#pragma mark Cursor support
+#pragma mark -
+
+IOReturn
+qxlGraphics::setCursorImage(void* cursorImage) {
+    LOG("called");
+
+    // until we start doing acceleration, we don't support HW cursor
+    return kIOReturnUnsupported;
+}
+
+IOReturn
+qxlGraphics::setCursorState(SInt32 x, SInt32 y, bool visible) {
+    // not logging as this may get called *frequently*
+
+    // until we start doing acceleration, we don't support HW cursor
+    return kIOReturnUnsupported;
+}
+
+#pragma mark -
+#pragma mark Interrupts
+#pragma mark -
+
+#pragma mark -
 #pragma mark EDID support
 #pragma mark -
 
