@@ -26,6 +26,14 @@ typedef struct {
 #define DISP_FLAGS_DEFAULT (kDisplayModeValidFlag | kDisplayModeSafeFlag | kDisplayModeDefaultFlag)
 } DisplayMode;
 
+typedef struct {
+    IOSelect type;
+    IOFBInterruptProc callback;
+    OSObject *target;
+    void *ref;
+    bool enabled;
+} FBInterrupt;
+
 class qxlGraphics : public IOFramebuffer {
     typedef IOFramebuffer super;
     
@@ -59,6 +67,9 @@ class qxlGraphics : public IOFramebuffer {
     void logf(const char *function, const char *fmt, ...);
 #define LOG(x, ...) logf(__func__, x, ##__VA_ARGS__)
     
+    // interrupt stuff
+    FBInterrupt _interrupt;
+
 public:
     // IOService routines
     bool start(IOPCIDevice *provider);

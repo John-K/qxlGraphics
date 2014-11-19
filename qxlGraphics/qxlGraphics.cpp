@@ -368,6 +368,51 @@ qxlGraphics::setCursorState(SInt32 x, SInt32 y, bool visible) {
 #pragma mark Interrupts
 #pragma mark -
 
+IOReturn
+qxlGraphics::setInterruptState(void* interruptRef, UInt32 state) {
+    if (interruptRef != &_interrupt) {
+        LOG("invalid interruptRef %p", interruptRef);
+        return kIOReturnBadArgument;
+    }
+    LOG("%sable interrupt %p", state ? "en" : "dis", interruptRef);
+    _interrupt.enabled = state;
+    
+    return kIOReturnSuccess;
+}
+
+IOReturn
+qxlGraphics::unregisterInterrupt(void* interruptRef) {
+    if (interruptRef != &_interrupt) {
+        LOG("invalid interruptRef %p", interruptRef);
+        return kIOReturnBadArgument;
+    }
+    
+    LOG("%p", interruptRef);
+    
+    bzero(&_interrupt, sizeof _interrupt);
+
+    return kIOReturnSuccess;
+}
+
+IOReturn
+qxlGraphics::registerForInterruptType(IOSelect interruptType, IOFBInterruptProc proc, OSObject* target, void* ref, void** interruptRef) {
+    IOReturn ret = kIOReturnUnsupported;
+    
+    LOG("intType: %d", interruptType);
+    
+    _interrupt.type = interruptType;
+    _interrupt.callback = proc;
+    _interrupt.target = target;
+    _interrupt.ref = ref;
+    _interrupt.enabled = true;
+    
+    *interruptRef = &_interrupt;
+    
+    ret = kIOReturnSuccess;
+    
+    return ret;
+}
+
 #pragma mark -
 #pragma mark EDID support
 #pragma mark -
